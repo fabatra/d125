@@ -178,7 +178,7 @@
     </div>
 
     <div style="margin-top: 25px;" class="no-print">
-      <button class="btn" onclick="window.print()">📄 Salvar / Imprimir Prova Corrigida (PDF)</button>
+      <button class="btn" onclick="savePdf()">📄 Salvar / Imprimir Prova Corrigida (PDF)</button>
       <button class="btn btn-secondary" onclick="location.reload()">🔄 Refazer Avaliação</button>
     </div>
   </div>
@@ -383,7 +383,7 @@
       listContainer.appendChild(itemDiv);
     });
 
-    // Parecer Pedagógico com lista de tópicos a revisar
+    // Parecer Pedagógico
     const pedContainer = document.getElementById("pedagogical-content");
     let pedHtml = "";
 
@@ -407,6 +407,14 @@
     }
 
     pedContainer.innerHTML = pedHtml;
+  }
+
+  function savePdf() {
+    // Formata o nome do aluno removendo espaços extras para o arquivo
+    const formattedName = studentName.replace(/\s+/g, "_");
+    // Define o título da página temporariamente para o navegador usar como nome do PDF
+    document.title = "Prova_Corrigida_" + formattedName + "_" + studentClass;
+    window.print();
   }
 </script>
 
