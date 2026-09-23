@@ -32,16 +32,18 @@
     .btn-secondary { background: #64748b; margin-top: 10px; }
     .btn-secondary:hover { background: #475569; }
 
-    .revision-box { background: #eff6ff; border-left: 4px solid var(--primary-light); padding: 15px; border-radius: 6px; margin-bottom: 20px; display: none; }
-    .revision-box h3 { margin-top: 0; color: var(--primary); }
+    .revision-box { background: #eff6ff; border-left: 5px solid var(--primary-light); padding: 18px; border-radius: 8px; margin-bottom: 20px; display: none; }
+    .revision-box h3 { margin-top: 0; color: var(--primary); font-size: 1.15rem; }
 
-    .option-btn { background: #f1f5f9; border: 1px solid var(--border); padding: 12px; margin-bottom: 8px; border-radius: 6px; width: 100%; text-align: left; cursor: pointer; font-size: 1rem; }
-    .option-btn:hover { background: #e2e8f0; }
-    .option-btn.selected { background: #dbeafe; border-color: var(--primary-light); font-weight: bold; }
-
-    .feedback-box { padding: 15px; border-radius: 6px; margin-top: 15px; font-size: 0.95rem; line-height: 1.5; display: none; }
-    .feedback-box.correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
-    .feedback-box.incorrect { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
+    .example-card {
+      background: #ffffff;
+      border: 1px solid #93c5fd;
+      border-radius: 6px;
+      padding: 15px;
+      margin-top: 12px;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
 
     .calc-block {
       background: #f8fafc;
@@ -54,6 +56,14 @@
       font-size: 0.9rem;
       color: #0f172a;
     }
+
+    .option-btn { background: #f1f5f9; border: 1px solid var(--border); padding: 12px; margin-bottom: 8px; border-radius: 6px; width: 100%; text-align: left; cursor: pointer; font-size: 1rem; }
+    .option-btn:hover { background: #e2e8f0; }
+    .option-btn.selected { background: #dbeafe; border-color: var(--primary-light); font-weight: bold; }
+
+    .feedback-box { padding: 15px; border-radius: 6px; margin-top: 15px; font-size: 0.95rem; line-height: 1.5; display: none; }
+    .feedback-box.correct { background: #dcfce7; color: #14532d; border: 1px solid #86efac; }
+    .feedback-box.incorrect { background: #fee2e2; color: #7f1d1d; border: 1px solid #fca5a5; }
 
     .step { display: none; }
     .step.active { display: block; }
@@ -109,18 +119,46 @@
       </select>
     </div>
 
-    <button class="btn no-print" onclick="toggleRevision()">📖 Abrir Revisão Teórica</button>
+    <button class="btn no-print" onclick="toggleRevision()">📖 Abrir Revisão Teórica e Exemplo Resolvido</button>
     
     <div id="revision-content" class="revision-box">
       <h3>Resumo Teórico: Relação de Euler</h3>
-      <p>Para todo poliedro convexo simples, vale a relação entre <b>Vértices (V)</b>, <b>Arestas (A)</b> e <b>Faces (F)</b>:</p>
-      <p style="font-size: 1.2rem; text-align: center; color: var(--primary);"><b>V - A + F = 2</b></p>
-      <p><b>Passos para resolução vertical:</b></p>
-      <ol>
-        <li>Identifique as variáveis conhecidas (V, A ou F).</li>
-        <li>Substitua os valores na fórmula.</li>
-        <li>Isole a incógnita em linhas separadas.</li>
-      </ol>
+      <p>Em qualquer poliedro convexo simples (como um cubo, caixas ou pirâmides), vale a regra:</p>
+      <p style="font-size: 1.25rem; text-align: center; color: var(--primary); background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #93c5fd;">
+        <b>V - A + F = 2</b>
+      </p>
+      <ul>
+        <li><b>Vértices (V):</b> As "pontas" ou cantos do poliedro.</li>
+        <li><b>Arestas (A):</b> As "linhas" ou palitos que ligam as pontas.</li>
+        <li><b>Faces (F):</b> As "paredes" ou superfícies planas do poliedro.</li>
+      </ul>
+
+      <div class="example-card">
+        <h4 style="margin-top: 0; color: var(--primary);">📌 EXEMPLO RESOLVIDO PASSO A PASSO (Para Relembrar)</h4>
+        <p><b>Enunciado Exemplo:</b> Um poliedro possui <b>8 vértices (V = 8)</b> e <b>6 faces (F = 6)</b>. Quantas <b>arestas (A)</b> ele tem?</p>
+        
+        <p><b>Como resolver passo a passo:</b></p>
+        <div class="calc-block">
+1) Anotar os dados que o exercício deu:
+   • Vértices (V) = 8
+   • Faces (F) = 6
+   • Arestas (A) = ? (o que queremos descobrir)
+
+2) Escrever a fórmula de Euler:
+   V - A + F = 2
+
+3) Substituir os números conhecidos na fórmula:
+   8 - A + 6 = 2
+
+4) Somar os números normais (8 + 6 = 14):
+   14 - A = 2
+
+5) Pensar: "14 menos qual número é igual a 2?":
+   A = 14 - 2
+   A = 12 arestas  ✅
+        </div>
+        <p style="margin-bottom: 0; font-size: 0.85rem; color: #475569;"><i>💡 Dica: Sempre faça a conta na vertical, linha por linha, para não confundir os sinais!</i></p>
+      </div>
     </div>
 
     <button class="btn" style="margin-top: 15px;" onclick="startQuiz()">Iniciar Quiz</button>
@@ -131,12 +169,18 @@
     <div class="progress"><div id="progress-bar" class="progress-bar"></div></div>
     
     <div class="no-print" style="margin-bottom: 15px; text-align: right;">
-      <button class="btn btn-secondary" style="width: auto; padding: 6px 12px; font-size: 0.85rem;" onclick="toggleQuizRevision()">📖 Revisão Teórica</button>
+      <button class="btn btn-secondary" style="width: auto; padding: 6px 12px; font-size: 0.85rem;" onclick="toggleQuizRevision()">📖 Revisão & Exemplo</button>
     </div>
 
     <div id="quiz-revision" class="revision-box">
-      <h3>Fórmula da Relação de Euler</h3>
-      <p><b>V - A + F = 2</b> ou <b>V + F = A + 2</b></p>
+      <h3>Lembrete: Relação de Euler</h3>
+      <p>Fórmula: <b>V - A + F = 2</b></p>
+      <div class="calc-block">
+Exemplo Rápido:
+Se V = 8 e F = 6:
+  8 - A + 6 = 2
+  14 - A = 2  =>  A = 12 arestas
+      </div>
     </div>
 
     <h3 id="question-title">Questão 1</h3>
@@ -410,9 +454,7 @@
   }
 
   function savePdf() {
-    // Formata o nome do aluno removendo espaços extras para o arquivo
     const formattedName = studentName.replace(/\s+/g, "_");
-    // Define o título da página temporariamente para o navegador usar como nome do PDF
     document.title = "Prova_Corrigida_" + formattedName + "_" + studentClass;
     window.print();
   }
